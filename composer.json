@@ -1,0 +1,21 @@
+{
+    "name": "freeq/vat-calculator",
+    "description": "Calculating VAT? Get shit done!",
+    "type": "library",
+    "require": {
+        "php": "7.1.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.5",
+        "phpstan/phpstan": "^0.10.6",
+        "friendsofphp/php-cs-fixer": "^2.13"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Patryk Woziński",
+            "email": "patryk.wozinski@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable"
+}
