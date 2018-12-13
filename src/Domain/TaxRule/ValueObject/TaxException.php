@@ -12,5 +12,25 @@ namespace Freeq\VatCalculator\Domain\TaxRule\ValueObject;
 
 final class TaxException
 {
-    // HMM.
+    /** @var string */
+    private $region;
+
+    /** @var float */
+    private $vatRate;
+
+    public function __construct(string $region, float $vatRate)
+    {
+        $this->region = $region;
+        $this->vatRate = $vatRate;
+    }
+
+    public function region(): string
+    {
+        return $this->region;
+    }
+
+    public function vatRate(): float
+    {
+        return $this->vatRate;
+    }
 }

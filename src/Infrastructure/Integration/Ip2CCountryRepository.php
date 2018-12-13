@@ -16,16 +16,22 @@ use Freeq\VatCalculator\Domain\Country\Repository\CountryRepository;
 
 final class Ip2CCountryRepository implements CountryRepository
 {
-    // TODO: Move to DI.
-    private const IP2C_URL = 'http://ip2c.org/';
     private const DELIMITER = ';';
     private const RESERVED_PREFIX = 'ZZ';
     private const PREFIX_POSITION = 1;
     private const FULL_NAME_POSITION = 3;
 
+    /** @var string */
+    private $ip2cUrl;
+
+    public function __construct(string $ip2cUrl)
+    {
+        $this->ip2cUrl = $ip2cUrl;
+    }
+
     public function oneByIpAddress(string $ipAddress): Country
     {
-        $url    = self::IP2C_URL . $ipAddress;
+        $url    = $this->ip2cUrl . $ipAddress;
         $result = \file_get_contents($url);
 
         if (false === $result)
