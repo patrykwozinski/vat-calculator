@@ -15,6 +15,7 @@ use Freeq\VatCalculator\Application\Query\Query;
 use Freeq\VatCalculator\Application\Query\QueryHandler;
 use Freeq\VatCalculator\Domain\Country\Repository\CountryRepository;
 use Freeq\VatCalculator\Domain\Price\Factory\PriceFactory;
+use Freeq\VatCalculator\Domain\Price\Projection\PriceView;
 use Freeq\VatCalculator\Domain\TaxRule\Repository\TaxRuleRepository;
 
 final class PriceNetByIpAddressQueryHandler implements QueryHandler
@@ -47,5 +48,9 @@ final class PriceNetByIpAddressQueryHandler implements QueryHandler
 
         $price = $this->priceFactory->createNet($query->price());
         $price->calculate($taxRule);
+
+        $priceView = new PriceView($price->net(), $price->gross(), $price->tax());
+
+        return new Item($priceView);
     }
 }

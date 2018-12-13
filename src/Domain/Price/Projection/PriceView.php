@@ -14,12 +14,43 @@ use Freeq\VatCalculator\Domain\Shared\ReadModelProjection;
 
 final class PriceView implements ReadModelProjection
 {
-    public function __construct()
+    /** @var float */
+    private $net;
+
+    /** @var float */
+    private $gross;
+
+    /** @var float */
+    private $tax;
+
+    public function __construct(float $net, float $gross, float $tax)
     {
+        $this->net = $net;
+        $this->gross = $gross;
+        $this->tax = $tax;
+    }
+
+    public function net(): float
+    {
+        return $this->net;
+    }
+
+    public function gross(): float
+    {
+        return $this->gross;
+    }
+
+    public function tax(): float
+    {
+        return $this->tax;
     }
 
     public function serialize(): array
     {
-        // TODO: Implement serialize() method.
+        return [
+            'net' => $this->net,
+            'gross' => $this->gross,
+            'tax' => $this->tax,
+        ];
     }
 }
