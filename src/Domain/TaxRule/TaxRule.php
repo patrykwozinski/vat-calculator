@@ -20,10 +20,14 @@ final class TaxRule
     /** @var float */
     private $vatRate;
 
-    public function __construct(Country $country, float $vatRate)
+    /** @var array */
+    private $exceptions;
+
+    public function __construct(Country $country, float $vatRate, array $exceptions = [])
     {
         $this->country = $country;
         $this->vatRate = $vatRate;
+        $this->exceptions = $exceptions;
     }
 
     public function country(): Country
@@ -34,5 +38,10 @@ final class TaxRule
     public function vatRate(): float
     {
         return $this->vatRate;
+    }
+
+    public function exceptions(): array
+    {
+        return $this->exceptions;
     }
 }
