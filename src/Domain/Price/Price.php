@@ -43,7 +43,7 @@ final class Price
 
     public function calculate(TaxRule $taxRule): void
     {
-        $tax = 0;
+        $tax = 0.0;
 
         if (null === $this->net)
         {
