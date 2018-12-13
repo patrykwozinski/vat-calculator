@@ -11,8 +11,9 @@ namespace Freeq\VatCalculator\Domain\TaxRule\Repository;
 
 
 use Freeq\VatCalculator\Domain\TaxRule\TaxRule;
+use Freeq\VatCalculator\Domain\TaxRule\ValueObject\Country;
 
 interface TaxRuleRepository
 {
-    public function oneByCountry(string $country): TaxRule;
+    public function oneByCountry(Country $country): TaxRule;
 }
