@@ -10,8 +10,8 @@ declare(strict_types=1);
 namespace Freeq\VatCalculator\Domain\TaxRule\Repository;
 
 
+use Freeq\VatCalculator\Domain\Country\Country;
 use Freeq\VatCalculator\Domain\TaxRule\TaxRule;
-use Freeq\VatCalculator\Domain\TaxRule\ValueObject\Country;
 use Freeq\VatCalculator\Domain\TaxRule\ValueObject\PostalCode;
 
 interface TaxRuleRepository
