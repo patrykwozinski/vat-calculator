@@ -16,7 +16,7 @@ final class CountryNotFound extends RuntimeException
 {
     public static function forIp(string $ipAddress): self
     {
-        $message = \sprintf('Cannot find country for IP: %s', $ipAddress);
+        $message = \sprintf('Cannot find country for IP address: %s', $ipAddress);
 
         return new self($message);
     }
