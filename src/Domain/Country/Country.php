@@ -3,11 +3,11 @@
  * Created by PhpStorm.
  * User: freeq
  * Date: 13/12/2018
- * Time: 01:44
+ * Time: 03:02
  */
 declare(strict_types=1);
 
-namespace Freeq\VatCalculator\Domain\TaxRule\ValueObject;
+namespace Freeq\VatCalculator\Domain\Country;
 
 
 final class Country
