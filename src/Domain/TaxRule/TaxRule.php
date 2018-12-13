@@ -10,7 +10,7 @@ declare(strict_types=1);
 namespace Freeq\VatCalculator\Domain\TaxRule;
 
 
-use Freeq\VatCalculator\Domain\TaxRule\ValueObject\Country;
+use Freeq\VatCalculator\Domain\Country\Country;
 
 final class TaxRule
 {

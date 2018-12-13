@@ -10,11 +10,11 @@ declare(strict_types=1);
 namespace Freeq\VatCalculator\Tests\Domain\Price;
 
 
+use Freeq\VatCalculator\Domain\Country\Country;
 use Freeq\VatCalculator\Domain\Price\Exception\InvalidPriceArguments;
 use Freeq\VatCalculator\Domain\Price\Exception\NotCalculatedPrice;
 use Freeq\VatCalculator\Domain\Price\Price;
 use Freeq\VatCalculator\Domain\TaxRule\TaxRule;
-use Freeq\VatCalculator\Domain\TaxRule\ValueObject\Country;
 use Freeq\VatCalculator\Tests\Domain\DomainTestCase;
 
 final class PriceTest extends DomainTestCase
