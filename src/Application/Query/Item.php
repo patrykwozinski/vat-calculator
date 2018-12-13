@@ -49,6 +49,6 @@ final class Item
     {
         $path = \explode('\\', \get_class($modelProjection));
 
-        return \array_pop($path);
+        return \array_pop($path) ?? '';
     }
 }
