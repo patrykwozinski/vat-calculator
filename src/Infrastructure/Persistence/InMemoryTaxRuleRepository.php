@@ -11,6 +11,7 @@ namespace Freeq\VatCalculator\Infrastructure\Persistence;
 
 
 use Freeq\VatCalculator\Domain\Country\Country;
+use Freeq\VatCalculator\Domain\TaxRule\Exception\TaxRuleNotFound;
 use Freeq\VatCalculator\Domain\TaxRule\Repository\TaxRuleRepository;
 use Freeq\VatCalculator\Domain\TaxRule\TaxRule;
 use Freeq\VatCalculator\Domain\TaxRule\ValueObject\TaxException;
@@ -155,13 +156,13 @@ final class InMemoryTaxRuleRepository implements TaxRuleRepository
         ],
     ];
 
-    public function oneByCountry(Country $country): ?TaxRule
+    public function oneByCountry(Country $country): TaxRule
     {
         $taxRule = $this->taxRules[$country->prefix()] ?? null;
 
         if (null === $taxRule)
         {
-            return null;
+            throw TaxRuleNotFound::forCountry($country);
         }
 
         $ruleExceptions = $taxRule['exceptions'] ?? [];

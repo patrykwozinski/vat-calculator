@@ -15,5 +15,5 @@ use Freeq\VatCalculator\Domain\TaxRule\TaxRule;
 
 interface TaxRuleRepository
 {
-    public function oneByCountry(Country $country): ?TaxRule;
+    public function oneByCountry(Country $country): TaxRule;
 }
