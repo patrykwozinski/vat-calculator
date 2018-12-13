@@ -12,8 +12,11 @@ namespace Freeq\VatCalculator\Domain\TaxRule\Repository;
 
 use Freeq\VatCalculator\Domain\TaxRule\TaxRule;
 use Freeq\VatCalculator\Domain\TaxRule\ValueObject\Country;
+use Freeq\VatCalculator\Domain\TaxRule\ValueObject\PostalCode;
 
 interface TaxRuleRepository
 {
     public function oneByCountry(Country $country): TaxRule;
+
+    public function oneByPostalCode(PostalCode $postalCode): TaxRule;
 }
