@@ -15,15 +15,40 @@ use Freeq\VatCalculator\Domain\Shared\ReadModelProjection;
 final class Item
 {
     /** @var ReadModelProjection */
-    private $model;
+    private $modelProjection;
 
-    public function __construct(ReadModelProjection $model)
+    /** @var string */
+    private $type;
+
+    /** @var string */
+    private $resource;
+
+    public function __construct(ReadModelProjection $modelProjection)
     {
-        $this->model = $model;
+        $this->modelProjection = $modelProjection;
+        $this->type = $this->classType($modelProjection);
+        $this->resource = $modelProjection->serialize();
     }
 
-    public function model(): ReadModelProjection
+    public function modelProjection(): ReadModelProjection
     {
-        return $this->model;
+        return $this->modelProjection;
+    }
+
+    public function type(): string
+    {
+        return $this->type;
+    }
+
+    public function resource(): string
+    {
+        return $this->resource;
+    }
+
+    private function classType(ReadModelProjection $modelProjection): string
+    {
+        $path = \explode('\\', \get_class($modelProjection));
+
+        return \array_pop($path);
     }
 }

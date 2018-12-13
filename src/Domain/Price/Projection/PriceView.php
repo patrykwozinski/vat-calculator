@@ -45,12 +45,14 @@ final class PriceView implements ReadModelProjection
         return $this->tax;
     }
 
-    public function serialize(): array
+    public function serialize(): string
     {
-        return [
+        $data = [
             'net' => $this->net,
             'gross' => $this->gross,
             'tax' => $this->tax,
         ];
+
+        return \json_encode($data);
     }
 }

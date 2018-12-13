@@ -3,16 +3,16 @@
  * Created by PhpStorm.
  * User: freeq
  * Date: 13/12/2018
- * Time: 22:43
+ * Time: 23:41
  */
 declare(strict_types=1);
 
-namespace Freeq\VatCalculator\Application\Query\Price;
+namespace Freeq\VatCalculator\Application\Query\PriceGross;
 
 
 use Freeq\VatCalculator\Application\Query\Query;
 
-final class PriceNetByIpAddressQuery implements Query
+final class PriceGrossByIpAddressQuery implements Query
 {
     /** @var string */
     private $ipAddress;

@@ -3,11 +3,11 @@
  * Created by PhpStorm.
  * User: freeq
  * Date: 13/12/2018
- * Time: 22:45
+ * Time: 23:41
  */
 declare(strict_types=1);
 
-namespace Freeq\VatCalculator\Application\Query\Price;
+namespace Freeq\VatCalculator\Application\Query\PriceGross;
 
 
 use Freeq\VatCalculator\Application\Query\Item;
@@ -18,7 +18,7 @@ use Freeq\VatCalculator\Domain\Price\Factory\PriceFactory;
 use Freeq\VatCalculator\Domain\Price\Projection\PriceView;
 use Freeq\VatCalculator\Domain\TaxRule\Repository\TaxRuleRepository;
 
-final class PriceNetByIpAddressQueryHandler implements QueryHandler
+final class PriceGrossByIpAddressQueryHandler implements QueryHandler
 {
     /** @var CountryRepository */
     private $countryRepository;
@@ -37,7 +37,7 @@ final class PriceNetByIpAddressQueryHandler implements QueryHandler
     }
 
     /**
-     * @param PriceNetByIpAddressQuery | Query $query
+     * @param PriceGrossByIpAddressQuery | Query $query
      *
      * @return Item
      */
@@ -46,7 +46,7 @@ final class PriceNetByIpAddressQueryHandler implements QueryHandler
         $country = $this->countryRepository->oneByIpAddress($query->ipAddress());
         $taxRule = $this->taxRuleRepository->oneByCountry($country);
 
-        $price = $this->priceFactory->createNet($query->price());
+        $price = $this->priceFactory->createGross($query->price());
         $price->calculate($taxRule);
 
         $priceView = new PriceView($price->net(), $price->gross(), $price->tax());

@@ -12,5 +12,5 @@ namespace Freeq\VatCalculator\Domain\Shared;
 
 interface ReadModelProjection
 {
-    public function serialize(): array;
+    public function serialize(): string;
 }
