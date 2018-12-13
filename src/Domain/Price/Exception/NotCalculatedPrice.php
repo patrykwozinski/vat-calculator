@@ -12,11 +12,11 @@ namespace Freeq\VatCalculator\Domain\Price\Exception;
 
 use Freeq\VatCalculator\Domain\Shared\Exception\RuntimeException;
 
-final class NotCalculatedNetPrice extends RuntimeException
+final class NotCalculatedPrice extends RuntimeException
 {
     public static function forOperation(string $operation): self
     {
-        $message = \sprintf('Not calculated price net for operation: %s', $operation);
+        $message = \sprintf('Not calculated price for operation: %s', $operation);
 
         return new self($message);
     }
