@@ -14,24 +14,18 @@ use Freeq\VatCalculator\Domain\Country\Country;
 use Freeq\VatCalculator\Domain\Country\Exception\CountryNotFound;
 use Freeq\VatCalculator\Domain\Country\Repository\CountryRepository;
 
-final class CountryDetector implements CountryRepository
+final class Ip2CCountryRepository implements CountryRepository
 {
+    // TODO: Move to DI.
+    private const IP2C_URL = 'http://ip2c.org/';
     private const DELIMITER = ';';
     private const RESERVED_PREFIX = 'ZZ';
     private const PREFIX_POSITION = 1;
     private const FULL_NAME_POSITION = 3;
 
-    /** @var string */
-    private $geocoderUrl;
-
-    public function __construct(string $geocoderUrl)
-    {
-        $this->geocoderUrl = $geocoderUrl;
-    }
-
     public function oneByIpAddress(string $ipAddress): Country
     {
-        $url    = $this->geocoderUrl . $ipAddress;
+        $url    = self::IP2C_URL . $ipAddress;
         $result = \file_get_contents($url);
 
         if (false === $result)
