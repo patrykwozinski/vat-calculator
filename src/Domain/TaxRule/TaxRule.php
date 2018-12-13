@@ -11,6 +11,7 @@ namespace Freeq\VatCalculator\Domain\TaxRule;
 
 
 use Freeq\VatCalculator\Domain\Country\Country;
+use Freeq\VatCalculator\Domain\TaxRule\ValueObject\TaxExceptionCollection;
 
 final class TaxRule
 {
@@ -20,10 +21,14 @@ final class TaxRule
     /** @var float */
     private $vatRate;
 
-    public function __construct(Country $country, float $vatRate)
+    /** @var TaxExceptionCollection */
+    private $exceptions;
+
+    public function __construct(Country $country, float $vatRate, TaxExceptionCollection $exceptions = null)
     {
         $this->country = $country;
         $this->vatRate = $vatRate;
+        $this->exceptions = $exceptions ?? new TaxExceptionCollection([]);
     }
 
     public function country(): Country
@@ -34,5 +39,10 @@ final class TaxRule
     public function vatRate(): float
     {
         return $this->vatRate;
+    }
+
+    public function exceptions(): TaxExceptionCollection
+    {
+        return $this->exceptions;
     }
 }
