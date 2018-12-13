@@ -49,16 +49,16 @@ final class Price
         {
             $tax = $this->gross * $taxRule->vatRate();
 
-            $this->net = $this->gross - $tax;
+            $this->net = \round($this->gross - $tax, 2);
         }
         elseif (null === $this->gross)
         {
             $tax = $this->net * $taxRule->vatRate();
 
-            $this->gross = $this->net + $tax;
+            $this->gross = \round($this->net + $tax, 2);
         }
 
-        $this->tax = $tax;
+        $this->tax = \round($tax, 2);
     }
 
     public function net(): float
